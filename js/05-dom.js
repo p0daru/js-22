@@ -1,19 +1,28 @@
-const btnAdd = document.querySelector('button[data-add]');
-const resetBtn = document.querySelector('button[data-reset]');
-const valueInput = document.querySelector('input[data-value]');
-const outputEl = document.querySelector('.js-output span');
+// const btnAdd = document.querySelector('button[data-add]'); // шукає першу кнопку в коді або специфічну кнопку
+// const resetBtn = document.querySelector('button[data-reset]');
+// const valueInput = document.querySelector('input[data-value]');
+// const outputEl = document.querySelector('.js-output span');
 
-let total = 0;
+// console.log(outputEl);
+// let total = 0;
 
-btnAdd.addEventListener('click', function () {
-  const value = Number(valueInput.value);
+// btnAdd.addEventListener('click', function () {
+//   // код при кліку
+//   console.log('u clicked me hehehhe');
 
-  total += value;
-  outputEl.textContent = total;
-  valueInput.value = '';
-});
+//   const value = Number(valueInput.value);
 
-resetBtn.addEventListener('click', function () {
-  total = 0;
-  outputEl.textContent = total;
-});
+//   console.log(value);
+
+//   total += value;
+//   outputEl.textContent = total;
+
+//   console.log(total);
+
+//   valueInput.value = '';
+// });
+
+// resetBtn.addEventListener('click', function () {
+//   total = 0;
+//   outputEl.textContent = 0;
+// });
