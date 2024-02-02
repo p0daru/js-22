@@ -13,10 +13,7 @@ const friends = ['Mango', 'Poly', 'Kiwi', 'Ajax'];
 //   string += friend + ',';
 // }
 
-// string = string.slice(0, string.length - 1);
+// string = string.slice(0, string.length - 1); // slice робить копію, метод не деструктивний
 
-const string = friends.join(',');
-console.log(friends);
-console.log(string);
-
-// Должно получиться 'Mango,Poly,Kiwi,Ajax'
+// const string = friends.join(', '); // абстракція
+// console.log(string);
