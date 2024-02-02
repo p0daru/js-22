@@ -5,13 +5,15 @@
  */
 
 const changeCase = function (string) {
+  // можна так: (string = "") - значення параметра по замовчуванню
+
   const letters = string.split('');
   let invertedString = '';
 
   for (const letter of letters) {
     const isInLowerCase = letter === letter.toLowerCase();
 
-    invertedString += isInLowerCase
+    invertedString += isInLowerCase // якщо тут буде return, функція закриється на першій букві
       ? letter.toUpperCase()
       : letter.toLowerCase();
   }

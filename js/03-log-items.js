@@ -2,6 +2,7 @@
  * Напиши функцию logItems(items) для перебора и логирования массива
  */
 
+// RETURN тут не потрібно
 const logItems = function (items) {
   for (const item of items) {
     console.log(item);

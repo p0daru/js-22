@@ -5,64 +5,89 @@
  * - Возврат значения
  */
 
+// оголошення функції
+// функціональний вираз, де x + y - параметри
+
 // const add = function (x, y) {
 //   console.log(x);
 //   console.log(y);
-//   console.log('Выполянется функция add');
+//   console.log('Function add');
 
-//   return x + y;
+//   return x + y; // повертає одне значення (масив, число, інша функцію)
 // };
 
-// const r1 = add(5, 3);
-// console.log('r1: ', r1);
+// // add(); // виклик без аргументів - undefined
+
+// const r1 = add(2, 3); // 2, 3 - аргументи, присвоюються у параметри
+// console.log(`r1: ${r1}`);
 
 // const r2 = add(10, 15);
-// console.log('r2: ', r2);
+// console.log(`r2: ${r2}`);
 
 // const r3 = add(30, 50);
-// console.log('r3: ', r3);
+// console.log(`r3: ${r3}`);
 
 // const fn = function (value) {
 //   console.log(1);
+
 //   console.log(2);
 
+//   // for (const iterator of object) {
+//   //   if () {
+//   //     for (const iterator of object) {
+//   //       if () {
+//   //           return 555; // ВКЛАДЕНІСТЬ НЕ ВАЖЛИВА, RETURN ПОВНІСТЮ ЗАКІНЧУЄ ВИКОНАННЯ ФУНКЦ
+//   //       }
+//   //     }
+//   //   }
+//   // }
+
 //   if (value < 50) {
-//     return 'Меньше чем 50';
+//     return 'value < 50'; // подібне до break, але не цикл закінчує, а повністю виконання функції
 //   }
 
-//   return 'Больше чем 50';
+//   return 'value > 50';
+
+//   // АБО
+//   // return value < 50 ? 'value < 50' : 'value > 50';
 // };
 
-// console.log('Результат функции: ', fn(10));
-
-// console.log('Результат функции: ', fn(1000));
+// console.log(fn(100));
+// console.log(fn(10));
 
 /*
  * - Стек вызовов
  * - Stack trace и поиск ошибок
  */
+
 const fnA = function () {
   console.log('Выполняется функция A');
+
+  fnB();
 };
 
 const fnB = function () {
   console.log('Выполняется функция B');
+
+  fnC();
 };
 
 const fnC = function () {
   console.log('Выполняется функция C');
+
+  console.log(value);
 };
 
-// console.log('Лог перед вызовом функции A');
+// // console.log('Лог перед вызовом функции A');
 
 fnA();
 
-// console.log('Лог после вызова функции A');
+// // console.log('Лог после вызова функции A');
 
-// console.log('Лог перед вызовом функции B');
+// // console.log('Лог перед вызовом функции B');
 fnB();
-// console.log('Лог после вызова функции B');
+// // console.log('Лог после вызова функции B');
 
-// console.log('Лог перед вызовом функции C');
+// // console.log('Лог перед вызовом функции C');
 fnC();
-// console.log('Лог после вызова функции C');
+// // console.log('Лог после вызова функции C');

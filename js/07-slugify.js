@@ -7,8 +7,8 @@ const slugify = function (string) {
   // const normalizedString = string.toLowerCase();
   // const words = normalizedString.split(' ');
   // const slug = words.join('-');
-  // return slug;
 
+  // return slug;
   return string.toLowerCase().split(' ').join('-');
 };
 

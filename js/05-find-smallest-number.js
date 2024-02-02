@@ -4,6 +4,9 @@
  */
 
 const findSmallesNumber = function (numbers) {
+  // ВСЯ ЛОГІКА ВСЕРЕДИНІ ФУНКЦІЇ,
+  // ВСІ ЗМІННІ ВСЕРЕДИНІ АБО ЦЕ ПАРАМЕТРИ
+
   let smallestNumber = numbers[0];
 
   for (const number of numbers) {
