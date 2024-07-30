@@ -57,13 +57,13 @@
 /*
  * Короткая запись свойств
  */
-// const username = 'Mango';
-// const email = 'mango@mail.com';
+const username = 'Mango';
+const email = 'mango@mail.com';
 
-// // const signupData = {
-// //   username: username,
-// //   email: email,
-// // };
+// const signupData = {
+//   username: username,
+//   email: email,
+// };
 
 // // АБО
 

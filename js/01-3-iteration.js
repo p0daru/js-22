@@ -23,12 +23,15 @@ let totalFeedback = 0;
 
 // console.log('totalFeedback', totalFeedback);
 
+// Object.values => робота тільки зі значеннями властивості (наприклад сплюсувати)
 const values = Object.values(feedback);
 
 console.log(values);
 
 for (const value of values) {
+  console.log(`Value: ${value}`);
+
   totalFeedback += value;
 }
 
-console.log(totalFeedback);
+console.log('totalFeedback: ', totalFeedback);
