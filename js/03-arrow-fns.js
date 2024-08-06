@@ -15,54 +15,65 @@
 //     return a + b + c;
 // };
 
-// console.log(add(5, 10, 15));
-// console.log(addArrow(5, 10, 15));
+// const addArrow1 = (a, b, c) => ({
+//     a,
+//     b,
+//     c,
+// });
+
+// console.log(add(1, 2, 3));
+// console.log(addArrow(1, 2, 3));
+// console.log(addArrow1(1, 2, 3));
 
 // const fnA = function () {
-//   return {
-//     a: 5,
-//   };
+//     return {
+//         a: 5,
+//     };
 // };
 
-// console.log(fnA());
+// const fnA1 = () => ({ a: 5 });
 
-// const arrowFnA = () => ({ arrowA: 5 });
+// console.log(fnA1());
 
-// console.log(arrowFnA());
+/// example 3
+// const filter1 = (array, test) => {
+//     const filteredArray = [];
 
-const filter = (array, test) => {
-    const filteredArray = [];
+//     for (const el of array) {
+//         const passed = test(el);
 
-    for (const el of array) {
-        console.log(el);
-        const passed = test(el);
+//         if (passed) {
+//             filteredArray.push(el);
+//         }
+//     }
 
-        if (passed) {
-            filteredArray.push(el);
-        }
-    }
-
-    return filteredArray;
-};
+//     return filteredArray;
+// };
 
 // const callback1 = value => value >= 3;
 
-const r1 = filter([1, 2, 3, 4, 5], value => value >= 3);
+// const r1 = filter1([1, 2, 3, 4, 5], callback1);
+// const r11 = filter1([1, 2, 3, 4, 5], value => value >= 3);
 
-console.log(r1);
+// console.log(r1);
+// console.log(r11);
 
 // const callback2 = value => value <= 4;
 
-const r2 = filter([1, 2, 3, 4, 5, 6, 7, 8], value => value <= 4);
-console.log(r2);
+// const r2 = filter1([1, 2, 3, 4, 5, 6, 7, 8], callback2);
+// const r22 = filter1([1, 2, 3, 4, 5, 6, 7, 8], value => value <= 4);
 
-const fruits = [
-    { name: 'apples', quantity: 200, isFresh: true },
-    { name: 'grapes', quantity: 150, isFresh: false },
-    { name: 'bananas', quantity: 100, isFresh: true },
-];
+// console.log(r2);
+// console.log(r22);
 
-// const getFruitsWithQuantity = fruit => fruit.quantity >= 120;
+// const fruits = [
+//     { name: 'apples', quantity: 200, isFresh: true },
+//     { name: 'grapes', quantity: 150, isFresh: false },
+//     { name: 'bananas', quantity: 100, isFresh: true },
+// ];
 
-const r3 = filter(fruits, fruit => fruit.quantity >= 120);
-console.log(r3);
+// // к-сть більше ніж 120
+// const getFruitsWithQuantity1 = fruit => fruit.quantity >= 120;
+
+// const r3 = filter1(fruits, getFruitsWithQuantity1);
+// console.log(r3);

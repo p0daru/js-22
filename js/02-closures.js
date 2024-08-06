@@ -6,18 +6,39 @@
  * родительской функции (той из которой её вернули),
  * это называется «замыкание».
  */
+// const fnA = function (parametr) {
+//     const innerVariable = 'Hello';
 
-const fnA = function (parameter) {
-    const innerVariable = 'значение внутренней переменной функции fnA';
+//     const innerFunction = function () {
+//         console.log(parametr);
+//         console.log(innerVariable);
+//         console.log('Call of innerFunction');
+//     };
 
-    const innerFunction = function () {
-        console.log(parameter);
-        console.log(innerVariable);
-        console.log('Это вызов innerFunction');
-    };
+//     return innerFunction;
+// };
 
-    return innerFunction;
-};
+/**
+ * у змінну fnB записується результат fnA,
+ * а результатом є функція innerFunction
+ * оскільки результат - функція, то і викликати треба функцію
+ */
+// const fnB = fnA(555);
+
+// fnB();
+
+// console.log(fnB); // тіло innerFunction
+// const fnA = function (parameter) {
+//     const innerVariable = 'значение внутренней переменной функции fnA';
+
+//     const innerFunction = function () {
+//         console.log(parameter);
+//         console.log(innerVariable);
+//         console.log('Это вызов innerFunction');
+//     };
+
+//     return innerFunction;
+// };
 
 // const fnB = fnA(555);
 
@@ -29,45 +50,42 @@ const fnA = function (parameter) {
  * Поварёнок
  */
 // const makeDish = function (sheffName, dish) {
-//     console.log(`${sheffName} готовит ${dish}`);
+//     console.log(`${sheffName} is cooking ${dish}`);
 // };
 
-// makeDish('Mango', 'пирожок');
-// makeDish('Mango', 'омлет');
-// makeDish('Mango', 'чай');
+// makeDish('Rodolfo', 'apple pie');
+// makeDish('Rodolfo', 'hot potato');
+// makeDish('Rodolfo', 'milkshake');
 
-// makeDish('Poly', 'котлеты');
-// makeDish('Poly', 'супик');
-// makeDish('Poly', 'кофе');
+// makeDish('Oliver', 'lazanya');
+// makeDish('Oliver', 'cake');
+// makeDish('Oliver', 'pasta');
 
-const makeSheff = function (name) {
-    const innverVar = 555;
-    const message = 'hello';
+// const makeCheff = function (sheffName) {
+//     const innerVar = 555;
+//     const message = 'Hello';
 
-    const makeDish = function (dish) {
-        console.log(message);
-        console.log(innverVar);
-        console.log(`${name} готовит ${dish}`);
-    };
+//     // функція, яка повертається, отримує доступ до всіх локальних змінних і параметрів (ЩО ЮЗАЮТЬСЯ ВСЕРЕДИНІ ЦІЄЇ ФУНКЦІЇ)
+//     const makeDish = function (dish) {
+//         console.log(innerVar);
+//         console.log(message);
+//         console.log(`${sheffName} is cooking ${dish}`);
+//     };
 
-    return makeDish;
-};
+//     return makeDish;
+// };
 
-// const mango = makeSheff('Mango');
-
+// const mango = makeCheff('Mango');
 // console.dir(mango);
 
-// mango('котлеты');
-// mango('пирожок');
+// mango('potato');
+// mango('escargots');
 
-// const poly = makeSheff('Poly');
-
+// const poly = makeCheff('Poly');
 // console.dir(poly);
 
-// poly('чай');
-// poly('омлет');
-
-// console.dir(mango);
+// poly('pizza');
+// poly('croissants');
 
 /*
  * Округлятор 🤷‍♂️
@@ -86,11 +104,11 @@ const makeSheff = function (name) {
 // console.log(rounder(5.1234, 2));
 // console.log(rounder(3.4567, 3));
 
-const rounder = function (places) {
-    return function (number) {
-        return Number(number.toFixed(places));
-    };
-};
+// const rounder = function (places) {
+//     return function (number) {
+//         return Number(number.toFixed(places));
+//     };
+// };
 
 // const rounder2 = rounder(2);
 // const rounder3 = rounder(3);
@@ -108,34 +126,21 @@ const rounder = function (places) {
 /*
  * Приватные данные и функции - скрытие реализации, интерфейс
  */
+// const myLib = {
+//     value: 0,
+//     add(num) {
+//         this.value += num;
+//     },
+//     getValue() {
+//         return this.value;
+//     },
+// };
 
-const salaryManagerFactory = function (employeeName, baseSalary = 0) {
-    let salary = baseSalary;
+// myLib.add(5);
 
-    return {
-        raise(amount) {
-            if (amount > 1000) {
-                return 'Ты офигел?';
-            }
+// console.log(myLib.value);
 
-            salary += amount;
-        },
-        lower(amount) {
-            salary -= amount;
-        },
-        current() {
-            return `Текущая зарпалата ${employeeName} - ${salary}`;
-        },
-    };
-};
-
-const salaryManager = salaryManagerFactory('Mango', 5000);
-
-console.log(salaryManager.current());
-
-console.log(salaryManager.raise(10000000));
-
-console.log(salaryManager.current());
+// console.log(myLib.getValue());
 
 // const myLibFactory = function () {
 //     let value = 0;
@@ -145,7 +150,7 @@ console.log(salaryManager.current());
 //     };
 
 //     return {
-//         add: add,
+//         add,
 //         getValue() {
 //             return value;
 //         },
@@ -154,9 +159,43 @@ console.log(salaryManager.current());
 
 // const myLib = myLibFactory();
 
-// console.dir(myLib.getValue);
+// console.dir(myLib); // це посилання, збирач сміття не працює
 
-// console.log(myLib);
-// console.log(myLib.getValue());
 // myLib.add(10);
 // console.log(myLib.getValue());
+
+// myLib.add(500);
+// console.log(myLib.getValue());
+
+// const salaryManagerFactory = function (employeeName, baseSalary = 0) {
+//     let salary = baseSalary;
+
+//     return {
+//         raise(amount) {
+//             if (amount > 1000) {
+//                 return 'Ты офигел?';
+//             }
+
+//             salary += amount;
+//         },
+//         lower(amount) {
+//             salary -= amount;
+//         },
+//         current() {
+//             return `Текущая зарпалата ${employeeName} - ${salary}`;
+//         },
+//     };
+// };
+
+// const salaryManager = salaryManagerFactory('Mango', 5000);
+
+// console.log(salaryManager);
+// console.log(salaryManager.current());
+
+// salaryManager.raise(200);
+
+// console.log(salaryManager.current());
+
+// console.log(salaryManager.raise(100000));
+
+// console.log(salaryManager.current());
