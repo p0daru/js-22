@@ -9,7 +9,12 @@
 
 const numbers = [5, 10, 15, 20, 25];
 
-const filteredNumbers = numbers.filter(number => number < 10 || number > 20);
+// const filteredNumbers = numbers.filter(function callback(number) {
+//   return number < 10 || number > 20;
+// });
+
+// const filteredNumbers = numbers.filter(number => number < 10 || number > 20);
+
 // console.log(filteredNumbers);
 
 const players = [
@@ -24,19 +29,22 @@ const players = [
  * Получаем массив всех онлайн игроков
  */
 
-const onlinePlayers = players.filter(({ online }) => online);
+const onlinePlayers = players.filter(player => player.online);
 // console.table(onlinePlayers);
+
+const onlinePlayers1 = players.filter(({ name, online }) => name && online);
+// console.table(onlinePlayers1);
 
 /*
  * Получаем массив всех оффлайн игроков
  */
 
-const offlinePlayers = players.filter(player => !player.online);
+const offlinePlayers = players.filter(({ online }) => !online);
 // console.table(offlinePlayers);
 
 /*
  * Получаем список хардкорных игроков с временем больше 250
  */
 
-const hardcorePlayers = players.filter(player => player.timePlayed > 250);
+const hardcorePlayers = players.filter(({ timePlayed }) => timePlayed > 250);
 // console.table(hardcorePlayers);

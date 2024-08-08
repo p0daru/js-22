@@ -24,12 +24,12 @@ const playerIdToFind = 'player-3';
 const playerWithId = players.find(({ id }) => id === playerIdToFind);
 // console.log(playerWithId);
 
-const finPlayerById = (allPlayer, playerId) => {
-  return allPlayer.find(({ id }) => id === playerId);
+const findPlayerById = (allPlayers, playerId) => {
+  return allPlayers.find(({ id }) => id === playerId);
 };
 
-// console.log(finPlayerById(players, 'player-1'));
-// console.log(finPlayerById(players, 'player-4'));
+console.log(findPlayerById(players, 'player-1'));
+console.log(findPlayerById(players, 'player-4'));
 
 /*
  * Ищем игрока по имени

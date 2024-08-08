@@ -1,14 +1,23 @@
 /*
- * Array.prototype.reduce()
+ * Array.prototype.reduce(callback(acc, number), початкове значення акумулятора) - ШВЕЙЦАРСЬКИЙ НІЖ роботи з колекцією ;)
  * - Поэлементо перебирает оригинальный массив
  * - Возвращает что угодно 🤯
  * - Заменяет всё на свете, но использовать нужно с умом
+ * - бере багато і робить з цього багато щось одне
  */
 
 const numbers = [5, 10, 15, 20, 25];
 
-const total = numbers.reduce((acc, number) => acc + number, 0);
+const total = numbers.reduce((acc, number) => {
+  // console.log('acc ', acc); // початкове значення acc - початкове значення масиву (або другий параметр методу reduce), а далі значення return
+  // console.log('number', number);
+
+  return acc + number; // значення acc
+}, 0); // другий параметр - початкове значення acc
 // console.log(total);
+
+const total1 = numbers.reduce((acc, number) => acc + number, 0); // другий параметр - початкове значення acc
+// console.log(total1);
 
 // accumulator = 0 -> number = 5 -> return 0 + 5
 // accumulator = 5 -> number = 10 -> return 5 + 10
@@ -26,10 +35,37 @@ const salary = {
   ajax: 150,
 };
 
-const totalSalary = Object.values(salary).reduce(
-  (total, value) => total + value,
-  0,
-);
+const totalSalary1 = function (salary) {
+  /**
+   * forEach - перебирає поелементно масив і НІЧОГО не повертає!!
+   * map - перебирає поелементно масив і ПОВЕРТАЄ масив такої ж довжини з undefined
+   * filter - перебирає поелементно масив і ПОВЕРТАЄ новий масив з елементами, які задовольняють умову в return
+   * find - перебирає поелементно масив і ПОВЕРТАЄ перший елемент, який задовольняє умову, або undefined
+   *
+   * every - перебирає поелементно масив і ПОВЕРТАЄ TRUE, якщо всі елементи масиву задовольняють умову, інакше FALSE
+   * some - перебирає поелементно масив і ПОВЕРТАЄ TRUE, якщо ХОЧА Б ОДИН елемент масиву задовольняє умову
+   */
+
+  /// отже, нам підходить forEach
+
+  let total = 0;
+
+  Object.values(salary).forEach(sal => (total += sal));
+
+  return total;
+};
+
+// console.log(totalSalary1(salary));
+
+const values = Object.values(salary);
+const totalSalary = values.reduce((total, value) => total + value, 0);
+
+// або
+// const totalSalary = Object.values(salary).reduce(
+//   (total, value) => total + value,
+//   0,
+// );
+
 // console.log(totalSalary);
 
 /*
@@ -44,10 +80,23 @@ const players = [
   { id: 'player-5', name: 'Chelsey', timePlayed: 80, online: true },
 ];
 
-const totalTimePlayed = players.reduce(
-  (totalTime, player) => totalTime + player.timePlayed,
-  0,
-);
+// const totalTimePlayed = players.reduce((totalTime, player) => {
+//   console.log('totalTime: ', totalTime);
+//   console.log('timePlayed: ', player.timePlayed);
+//   console.log(
+//     `totalTime + timePlayed = ${totalTime} + ${player.timePlayed} `,
+//     totalTime + player.timePlayed,
+//   );
+
+//   return totalTime + player.timePlayed;
+// }, 0);
+
+// console.log('totalTimePlayed: ', totalTimePlayed);
+
+// const totalTimePlayed = players.reduce(
+//   (totalTime, player) => totalTime + player.timePlayed,
+//   0,
+// );
 
 // console.log(totalTimePlayed);
 
@@ -78,7 +127,20 @@ const tweets = [
   { id: '004', likes: 0, tags: ['js', 'nodejs', 'react'] },
 ];
 
-const allTags = tweets.reduce((acc, tweet) => [...acc, ...tweet.tags], []);
+// const allTags = tweets.reduce((acc, tweet) => {
+//   // acc.push(...tweet.tags); // поганий код, бо ми змінюємо оригінальний tags
+
+/**
+ * створюмо новий масив в return
+ * розпиляємо туди масив acc = [] і масив tweet = ['js', 'nodejs']
+ * [...acc, ...tweet] = [...[], ...['js', 'nodejs']] = ['js', 'nodejs'] = acc
+ *
+ * те, що ми повертаємо, це новий акумулятор!!
+ */
+//   return [...acc, ...tweet];
+// }, []);
+
+const allTags = tweets.reduce((tags, tweet) => [...tags, ...tweet.tags], []);
 console.log(allTags);
 
 // acc = [], tweet.tags = ['js', 'nodejs'] return [...[], ...['js', 'nodejs']]
@@ -90,8 +152,6 @@ console.log(allTags);
  * Ведём статистику тегов
  */
 // const tagsStats = allTags.reduce((acc, tag) => {
-//   console.log(acc);
-
 //   if (acc[tag]) {
 //     acc[tag] += 1;
 
@@ -103,12 +163,46 @@ console.log(allTags);
 //   return acc;
 // }, {});
 
-const tagsStats = allTags.reduce((acc, tag) => {
-  return {
+// console.log(tagsStats);
+
+// const tagsStats = allTags.reduce((acc, tag) => {
+//   /// варіант 1
+//   // if (acc[tag]) {
+//   //   return {
+//   //     ...acc,
+//   //     [tag]: acc[tag] + 1,
+//   //   };
+//   // }
+
+//   // return {
+//   //   ...acc,
+//   //   [tag]: 1,
+//   // };
+
+//   /// варіант 2
+//   return {
+//     ...acc,
+//     [tag]: acc[tag] ? acc[tag] + 1 : 1,
+//   };
+// }, {});
+
+/// варіант 3
+const tagsStats = allTags.reduce(
+  (acc, tag) => ({
     ...acc,
     [tag]: acc[tag] ? acc[tag] + 1 : 1,
-  };
-}, {});
+  }),
+  {},
+);
+
+console.log(tagsStats);
+
+// const tagsStats = allTags.reduce((acc, tag) => {
+//   return {
+//     ...acc,
+//     [tag]: acc[tag] ? acc[tag] + 1 : 1,
+//   };
+// }, {});
 // console.log(tagsStats);
 
 // если свойство с ключом tag есть. увеличить его значение на 1
