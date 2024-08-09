@@ -5,6 +5,7 @@
  */
 
 const array = [1, 2, [4, [5]], [6, [7, 8, [9]]]];
+// console.log(array.flat());
 // console.log(array.flat(3));
 
 /*
@@ -20,15 +21,12 @@ const tweets = [
     { id: '004', likes: 0, tags: ['js', 'nodejs', 'react'] },
 ];
 
-// const tags = tweets.flatMap(t => t.tags);
+// const tags = tweets.reduce((acc, tweet) => [...acc, ...tweet.tags], []);
 // console.log(tags);
 
-// const stats = tags.reduce((acc, tag) => {
-//     return {
-//         ...acc,
-//         [tag]: acc[tag] ? acc[tag] + 1 : 1,
-//     };
-// }, {});
+// const allTags = tweets.map(tweet => tweet.tags).flat();
+// const allTags = tweets.flatMap(tweet => tweet.tags);
+// console.log(allTags);
 
 const stats = tweets
     .flatMap(tweet => tweet.tags)
@@ -39,5 +37,11 @@ const stats = tweets
         }),
         {},
     );
-
 console.log(stats);
+
+// const stats = tags.reduce((acc, tag) => {
+//     return {
+//         ...acc,
+//         [tag]: acc[tag] ? acc[tag] + 1 : 1,
+//     };
+// }, {});

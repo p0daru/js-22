@@ -2,6 +2,9 @@
  * Цепочки вызовов - chaining
  */
 const numbers = [1, 5, 2, 4, 3];
+// 1. відфільтрувати (числа, які більше 2)
+// 2. потроїти числа
+// 3. відсортувати за зростанням
 
 // const greaterThenTwo = numbers.filter(num => num > 2);
 // console.log(greaterThenTwo);
@@ -13,12 +16,12 @@ const numbers = [1, 5, 2, 4, 3];
 // console.log(sorted);
 
 // Цепочка предыдущих трёх
-const sorted = numbers
-    .filter(num => num > 2)
+const result = numbers
+    .filter(num => num > 2) // копія numbers
     .map(num => num * 3)
     .sort((a, b) => a - b);
 
-console.log(sorted);
+// console.log(result);
 
 /*
  * Сортируем тех кто онлайн по рангу
@@ -37,7 +40,7 @@ const onlineAndSorted = players
     .filter(player => player.isOnline)
     .sort((playerA, playerB) => playerA.rank - playerB.rank);
 
-// console.table(onlineAndSorted);
+console.log(onlineAndSorted);
 
 /*
  * Chaining в методах объекта как jquery
@@ -58,5 +61,5 @@ const element = {
     },
 };
 
-element.toggleHovered().changeClass('open').toggleHovered();
-console.log(element);
+// element.toggleHovered().changeClass('open').toggleHovered();
+// console.log(element);
