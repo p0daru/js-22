@@ -8,9 +8,8 @@
  * 🐷 - синтаксис публичных свойства и методы классов
  * 🐷 - геттеры и сеттеры
  */
-
 class Car {
-    static description = 'Класс описывающий автомобиль';
+    static description = 'Клас, який описує автомобіль';
 
     static logInfo(carObj) {
         console.log('Car.logInfo -> carObj', carObj);
@@ -22,20 +21,20 @@ class Car {
         this._price = price;
     }
 
-    get price() {
-        return this._price;
-    }
-
-    set price(newPrice) {
-        this._price = newPrice;
-    }
-
     get model() {
         return this._model;
     }
 
     set model(newModel) {
         this._model = newModel;
+    }
+
+    get price() {
+        return this._price;
+    }
+
+    set price(newPrice) {
+        this._price = newPrice;
     }
 }
 
@@ -45,12 +44,12 @@ const carInstance = new Car({
     price: 35000,
 });
 
-console.log(carInstance.model);
-carInstance.model = 'Q4';
-console.log(carInstance.model);
+console.log('carInstance.model -> ', carInstance.model);
+carInstance.model = 'Q12';
+console.log('carInstance.model -> ', carInstance.model);
 
-console.log(carInstance.price);
-carInstance.price = 50000;
-console.log(carInstance.price);
+console.log('carInstance.price -> ', carInstance.price);
+carInstance.price = 9000;
+console.log('carInstance.price -> ', carInstance.price);
 
-console.log(carInstance);
+console.log(Car.description);
